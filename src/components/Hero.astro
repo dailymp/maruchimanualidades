@@ -1,0 +1,134 @@
+---
+---
+<section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-leaf-texture">
+  <!-- Fondo decorativo con capas -->
+  <div class="absolute inset-0 bg-gradient-to-br from-brand-50 via-cream-50 to-warm-50" aria-hidden="true"></div>
+  <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle at 20% 20%, #bbf7d0 0%, transparent 50%), radial-gradient(circle at 80% 80%, #dcfce7 0%, transparent 50%), radial-gradient(circle at 50% 50%, #fdf9ec 0%, transparent 70%);" aria-hidden="true"></div>
+
+  <!-- Elementos decorativos flotantes -->
+  <div class="absolute top-20 left-10 w-64 h-64 bg-brand-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-float" aria-hidden="true"></div>
+  <div class="absolute bottom-20 right-10 w-80 h-80 bg-cream-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float animate-delay-300" aria-hidden="true"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-50 rounded-full mix-blend-multiply filter blur-3xl opacity-20" aria-hidden="true"></div>
+
+  <!-- Patrón de hojas decorativo SVG -->
+  <div class="absolute inset-0 opacity-5" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="leaves" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+          <text x="10" y="15" font-size="12" text-anchor="middle" fill="#15803d">🌿</text>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#leaves)" />
+    </svg>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-28 pb-16 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <!-- Contenido texto -->
+    <div class="text-center lg:text-left order-2 lg:order-1">
+      <!-- Badge de ubicación -->
+      <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-brand-200 text-brand-700 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-6 shadow-soft animate-fade-in">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+          <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+        </svg>
+        Artesanía local · Islas Canarias
+      </div>
+
+      <!-- Headline principal -->
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-warm-900 leading-tight mb-6 animate-fade-up">
+        Cada pieza
+        <span class="relative inline-block">
+          <span class="relative z-10 text-brand-600 italic">cuenta</span>
+          <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 8 Q50 2, 100 8 Q150 14, 198 8" stroke="#4ade80" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </span>
+        <br />
+        una historia
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="text-lg md:text-xl text-warm-600 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0 animate-fade-up animate-delay-200 text-balance">
+        Creaciones artesanales hechas con amor en Canarias. Talleres, productos únicos y el placer de lo hecho a mano, piezas que no encontrarás en ningún otro lugar.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-up animate-delay-300">
+        <a
+          href="#creaciones"
+          class="btn-primary"
+          aria-label="Ver las creaciones de Maruchy"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+          </svg>
+          Ver mis creaciones
+        </a>
+        <a
+          href="#talleres"
+          class="btn-outline"
+          aria-label="Conocer los talleres disponibles"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+          Mis talleres
+        </a>
+      </div>
+
+      <!-- Stats sociales -->
+      <div class="flex gap-8 justify-center lg:justify-start mt-12 pt-8 border-t border-brand-100 animate-fade-up animate-delay-400">
+        <div class="text-center lg:text-left">
+          <div class="font-display text-2xl font-bold text-warm-900">+500</div>
+          <div class="text-xs text-warm-500 uppercase tracking-wide mt-0.5">Piezas creadas</div>
+        </div>
+        <div class="w-px bg-brand-100"></div>
+        <div class="text-center lg:text-left">
+          <div class="font-display text-2xl font-bold text-warm-900">+200</div>
+          <div class="text-xs text-warm-500 uppercase tracking-wide mt-0.5">Alumnos felices</div>
+        </div>
+        <div class="w-px bg-brand-100"></div>
+        <div class="text-center lg:text-left">
+          <div class="font-display text-2xl font-bold text-warm-900">5★</div>
+          <div class="text-xs text-warm-500 uppercase tracking-wide mt-0.5">Valoración media</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Imagen hero / logo destacado -->
+    <div class="order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-in animate-delay-200">
+      <div class="relative">
+        <!-- Marco decorativo exterior -->
+        <div class="absolute -inset-4 bg-gradient-to-br from-brand-200 to-cream-300 rounded-full opacity-30 blur-2xl" aria-hidden="true"></div>
+        <div class="absolute -inset-1 bg-gradient-to-br from-brand-300 to-brand-100 rounded-full opacity-40 animate-float" aria-hidden="true"></div>
+
+        <!-- Logo principal -->
+        <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden ring-4 ring-white shadow-card-hover">
+          <img
+            src="/logo.jpg"
+            alt="Maruchy Manualidades — Artesanía canaria hecha a mano"
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
+
+        <!-- Badges flotantes -->
+        <div class="absolute -top-2 -right-2 md:top-4 md:right-4 bg-white rounded-2xl shadow-card px-3 py-2 flex items-center gap-2 border border-warm-100">
+          <span class="text-xl" aria-hidden="true">🌿</span>
+          <span class="text-xs font-medium text-warm-700 whitespace-nowrap">Hecho a mano</span>
+        </div>
+        <div class="absolute -bottom-2 -left-2 md:bottom-4 md:left-4 bg-brand-600 text-white rounded-2xl shadow-card px-3 py-2 flex items-center gap-2">
+          <span class="text-xl" aria-hidden="true">🏝️</span>
+          <span class="text-xs font-medium whitespace-nowrap">Canarias</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-warm-400 animate-bounce" aria-hidden="true">
+    <span class="text-xs uppercase tracking-widest font-medium">Scroll</span>
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>

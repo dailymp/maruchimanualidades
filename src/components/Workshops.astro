@@ -1,0 +1,133 @@
+---
+const workshops = [
+  {
+    title: "Iniciación al Ganchillo",
+    duration: "3 horas",
+    level: "Principiante",
+    levelColor: "bg-green-100 text-green-700",
+    description: "Aprende las bases del ganchillo desde cero. Saldrás del taller con tu primera pieza terminada y las ganas de crear mucho más.",
+    includes: ["Materiales incluidos", "Grupo reducido (máx. 8)", "Diploma de participación"],
+    price: "35€",
+    icon: "🧶",
+  },
+  {
+    title: "Cuadros Abstractos con Acrílicos",
+    duration: "4 horas",
+    level: "Todos los niveles",
+    levelColor: "bg-blue-100 text-blue-700",
+    description: "Descubre el poder expresivo de la pintura acrílica. Técnicas de capas, texturas y color para crear un cuadro único que te llevarás a casa.",
+    includes: ["Lienzo incluido", "Pinturas y pinceles", "Snack & bebida"],
+    price: "45€",
+    icon: "🎨",
+  },
+  {
+    title: "Decoración Floral con Materiales Naturales",
+    duration: "2,5 horas",
+    level: "Principiante",
+    levelColor: "bg-green-100 text-green-700",
+    description: "Aprende a crear centros decorativos y coronas florales con flores secas, ramas y materiales naturales de Canarias.",
+    includes: ["Todos los materiales", "Recetario de técnicas", "Take your creation home"],
+    price: "40€",
+    icon: "🌸",
+  },
+  {
+    title: "Taller Privado Personalizado",
+    duration: "A elegir",
+    level: "Cualquier técnica",
+    levelColor: "bg-purple-100 text-purple-700",
+    description: "¿Quieres organizar un taller para tu grupo de amigas, despedida de soltera, team building o evento especial? Lo personalizamos para ti.",
+    includes: ["Técnica a elegir", "Grupos desde 4 personas", "Catering opcional"],
+    price: "Consultar",
+    icon: "🎉",
+    featured: true,
+  },
+];
+---
+<section id="talleres" class="py-24 lg:py-32 bg-gradient-to-b from-brand-50/50 to-warm-50">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <!-- Header -->
+    <div class="text-center mb-16 reveal">
+      <span class="section-tag">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+        </svg>
+        Talleres
+      </span>
+      <h2 class="section-heading mb-4">
+        Aprende a crear<br />
+        <em class="text-brand-600">con tus propias manos</em>
+      </h2>
+      <p class="text-warm-500 text-lg max-w-xl mx-auto text-balance">
+        Talleres íntimos en grupos reducidos donde el proceso es tan bonito como el resultado. Todos los niveles bienvenidos.
+      </p>
+    </div>
+
+    <!-- Cards talleres -->
+    <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+      {workshops.map((ws, i) => (
+        <article
+          class={`reveal card relative bg-white border ${ws.featured ? 'border-brand-300' : 'border-warm-100'} hover:-translate-y-1`}
+          style={`animation-delay: ${i * 100}ms`}
+        >
+          {ws.featured && (
+            <div class="absolute -top-3 left-6 bg-brand-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-soft">
+              ⭐ Más popular
+            </div>
+          )}
+          <div class="p-6 lg:p-8">
+            <div class="flex items-start justify-between mb-4">
+              <span class="text-3xl" aria-hidden="true">{ws.icon}</span>
+              <div class="text-right">
+                <div class="font-display text-2xl font-bold text-warm-900">{ws.price}</div>
+                <div class="text-xs text-warm-400">por persona</div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 mb-3">
+              <span class={`text-xs font-semibold px-2.5 py-1 rounded-full ${ws.levelColor}`}>{ws.level}</span>
+              <span class="text-xs text-warm-400 flex items-center gap-1">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                {ws.duration}
+              </span>
+            </div>
+
+            <h3 class="font-display text-xl text-warm-900 mb-3">{ws.title}</h3>
+            <p class="text-warm-500 text-sm leading-relaxed mb-5">{ws.description}</p>
+
+            <!-- Incluye -->
+            <ul class="space-y-2 mb-6" aria-label={`Incluye en ${ws.title}`}>
+              {ws.includes.map(item => (
+                <li class="flex items-center gap-2 text-sm text-warm-600">
+                  <svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={`https://wa.me/34600000000?text=Hola%20Maruchy!%20Me%20gustaría%20reservar%20el%20taller%20de%20${encodeURIComponent(ws.title)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`w-full flex items-center justify-center gap-2 py-3 rounded-full font-medium text-sm transition-all duration-200 ${ws.featured ? 'bg-brand-600 text-white hover:bg-brand-700' : 'border-2 border-brand-600 text-brand-600 hover:bg-brand-50'}`}
+              aria-label={`Reservar taller ${ws.title}`}
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Reservar plaza
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Nota adicional -->
+    <p class="text-center text-warm-400 text-sm mt-8 reveal">
+      📍 Los talleres se realizan en Las Palmas de Gran Canaria. Consulta próximas fechas disponibles.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,77 @@
+---
+// Galería simulada con placeholders de colores vibrantes
+// Cuando tengas fotos reales, sustitúyelas en /public/gallery/
+const galleryItems = [
+  { label: "Cesta de ganchillo", bg: "bg-amber-100", emoji: "🧶", size: "lg" },
+  { label: "Cuadro abstracto", bg: "bg-purple-100", emoji: "🎨", size: "sm" },
+  { label: "Corona floral", bg: "bg-rose-100", emoji: "🌸", size: "sm" },
+  { label: "Taller grupal", bg: "bg-brand-100", emoji: "👩‍🎨", size: "md" },
+  { label: "Velas artesanales", bg: "bg-yellow-100", emoji: "🕯️", size: "sm" },
+  { label: "Bordado a mano", bg: "bg-teal-100", emoji: "🪡", size: "lg" },
+  { label: "Decoración hogar", bg: "bg-pink-100", emoji: "🏡", size: "sm" },
+  { label: "Regalo personalizado", bg: "bg-orange-100", emoji: "🎁", size: "md" },
+];
+---
+<section id="galeria" class="py-24 lg:py-32 bg-warm-50">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <!-- Header -->
+    <div class="text-center mb-12 reveal">
+      <span class="section-tag">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+        </svg>
+        Galería
+      </span>
+      <h2 class="section-heading mb-4">
+        Piezas que
+        <em class="text-brand-600"> enamoran</em>
+      </h2>
+      <p class="text-warm-500 max-w-md mx-auto text-balance">
+        Un vistazo a algunas de mis creaciones. Sígueme en Instagram para ver todo el catálogo y las novedades.
+      </p>
+    </div>
+
+    <!-- Masonry Grid -->
+    <div class="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4 reveal">
+      {galleryItems.map((item, i) => (
+        <div
+          class={`break-inside-avoid group relative overflow-hidden rounded-2xl ${item.bg} border border-white/50 shadow-soft hover:shadow-card-hover transition-all duration-300 cursor-pointer hover:-translate-y-0.5`}
+          style={`animation-delay: ${i * 60}ms`}
+        >
+          <div class={`flex items-center justify-center ${item.size === 'lg' ? 'h-56 md:h-64' : item.size === 'md' ? 'h-44 md:h-52' : 'h-36 md:h-44'}`}>
+            <!-- Placeholder visual si no hay imagen -->
+            <div class="text-center p-4">
+              <span class="text-5xl md:text-6xl block mb-2 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">{item.emoji}</span>
+              <span class="text-xs font-medium text-warm-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200">{item.label}</span>
+            </div>
+          </div>
+          <!-- Overlay hover -->
+          <div class="absolute inset-0 bg-brand-900/0 group-hover:bg-brand-900/10 transition-all duration-300 flex items-end justify-end p-3">
+            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-soft">
+              <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA Instagram -->
+    <div class="text-center mt-12 reveal">
+      <p class="text-warm-500 text-sm mb-6">¿Quieres ver más? Sígueme en Instagram donde publico todas mis novedades y el proceso creativo.</p>
+      <a
+        href="https://www.instagram.com/maruchymanualidades"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white font-medium rounded-full hover:opacity-90 active:scale-95 transition-all duration-200 shadow-soft"
+        aria-label="Seguir a Maruchy Manualidades en Instagram"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        @maruchymanualidades
+      </a>
+    </div>
+  </div>
+</section>

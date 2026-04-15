@@ -1,6 +1,16 @@
 ---
 const products = [
   {
+    image: "/bolso-artesanal-bordado-margaritas-bambu.jpg",
+    imageAlt: "Bolso artesanal hecho a mano con bordado de margaritas y asa de bambú – Maruchy",
+    name: "Bolsos Artesanales Bordados",
+    description: "El sello de Maruchy. Bolsos únicos confeccionados a mano con telas seleccionadas, asas de bambú o madera y bordados exclusivos de flores, hojas y motivos naturales. Cada bolso es irrepetible — no encontrarás dos iguales en ningún lugar.",
+    tags: ["⭐ Producto estrella", "Hecho a mano", "Personalizable"],
+    color: "from-brand-50 to-cream-100",
+    accent: "bg-brand-100 text-brand-700",
+    featured: true,
+  },
+  {
     emoji: "🎨",
     name: "Cuadros y Pinturas",
     description: "Arte original sobre lienzo, con técnicas mixtas y la paleta de colores de Canarias. Cada cuadro es irrepetible.",
@@ -11,7 +21,7 @@ const products = [
   {
     emoji: "🧶",
     name: "Tejidos & Ganchillo",
-    description: "Desde bolsos y cestas hasta prendas y accesorios. Piezas funcionales con una estética artesanal que enamora.",
+    description: "Cestas, accesorios y prendas tejidas a mano. Piezas funcionales con una estética artesanal que enamora.",
     tags: ["Funcional", "Hecho a mano"],
     color: "from-amber-50 to-cream-100",
     accent: "bg-amber-100 text-amber-700",
@@ -40,14 +50,6 @@ const products = [
     color: "from-teal-50 to-brand-50",
     accent: "bg-teal-100 text-teal-700",
   },
-  {
-    emoji: "🕯️",
-    name: "Velas & Aromaterapia",
-    description: "Velas artesanales con esencias naturales y envases únicos decorados a mano. Un regalo que deleita todos los sentidos.",
-    tags: ["Natural", "Aromático"],
-    color: "from-yellow-50 to-cream-100",
-    accent: "bg-yellow-100 text-yellow-700",
-  },
 ];
 ---
 <section id="creaciones" class="py-24 lg:py-32 bg-white">
@@ -61,8 +63,8 @@ const products = [
         Mis creaciones
       </span>
       <h2 class="section-heading mb-4">
-        Arte que puedes llevar<br />
-        <em class="text-brand-600">a casa o regalar</em>
+        Bolsos artesanales<br />
+        <em class="text-brand-600">y mucho más</em>
       </h2>
       <p class="text-warm-500 text-lg max-w-xl mx-auto text-balance">
         Cada categoría es un universo de posibilidades. Sea lo que sea que buscas, lo hago con amor y con los mejores materiales.
@@ -73,23 +75,46 @@ const products = [
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
       {products.map((product, i) => (
         <article
-          class={`reveal card group cursor-pointer bg-gradient-to-br ${product.color} border border-warm-100 hover:-translate-y-1`}
+          class={`reveal card group cursor-pointer bg-gradient-to-br ${product.color} border border-warm-100 hover:-translate-y-1 ${product.featured ? 'sm:col-span-2 lg:col-span-2' : ''}`}
           style={`animation-delay: ${i * 80}ms`}
         >
-          <div class="p-6">
-            <!-- Emoji icon -->
-            <div class="text-4xl mb-4 group-hover:animate-float inline-block" aria-hidden="true">{product.emoji}</div>
-            <!-- Tags -->
-            <div class="flex gap-2 mb-3 flex-wrap">
-              {product.tags.map(tag => (
-                <span class={`text-xs font-semibold px-2.5 py-1 rounded-full ${product.accent}`}>{tag}</span>
-              ))}
+          {product.image ? (
+            <>
+              <!-- Imagen real para producto estrella -->
+              <div class="overflow-hidden rounded-t-2xl">
+                <img
+                  src={product.image}
+                  alt={product.imageAlt}
+                  class="w-full h-96 object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-6">
+                <div class="flex gap-2 mb-3 flex-wrap">
+                  {product.tags.map(tag => (
+                    <span class={`text-xs font-semibold px-2.5 py-1 rounded-full ${product.accent}`}>{tag}</span>
+                  ))}
+                </div>
+                <h3 class="font-display text-xl text-warm-900 mb-2 group-hover:text-brand-700 transition-colors">{product.name}</h3>
+                <p class="text-warm-500 text-sm leading-relaxed">{product.description}</p>
+              </div>
+            </>
+          ) : (
+            <div class="p-6">
+              <!-- Emoji icon -->
+              <div class="text-4xl mb-4 group-hover:animate-float inline-block" aria-hidden="true">{product.emoji}</div>
+              <!-- Tags -->
+              <div class="flex gap-2 mb-3 flex-wrap">
+                {product.tags.map(tag => (
+                  <span class={`text-xs font-semibold px-2.5 py-1 rounded-full ${product.accent}`}>{tag}</span>
+                ))}
+              </div>
+              <!-- Nombre -->
+              <h3 class="font-display text-xl text-warm-900 mb-2 group-hover:text-brand-700 transition-colors">{product.name}</h3>
+              <!-- Descripción -->
+              <p class="text-warm-500 text-sm leading-relaxed">{product.description}</p>
             </div>
-            <!-- Nombre -->
-            <h3 class="font-display text-xl text-warm-900 mb-2 group-hover:text-brand-700 transition-colors">{product.name}</h3>
-            <!-- Descripción -->
-            <p class="text-warm-500 text-sm leading-relaxed">{product.description}</p>
-          </div>
+          )}
           <!-- Footer de la card -->
           <div class="px-6 pb-6">
             <a
@@ -113,7 +138,7 @@ const products = [
     <div class="text-center mt-12 reveal">
       <p class="text-warm-500 mb-6">¿No encuentras lo que buscas? Cuéntame tu idea y lo creamos juntas.</p>
       <a
-        href="https://wa.me/34600000000?text=Hola%20Maruchy!%20Tengo%20una%20idea%20para%20una%20creación%20personalizada"
+        href="https://wa.me/34676053518?text=Hola%20Maruchy!%20Tengo%20una%20idea%20para%20una%20creación%20personalizada"
         target="_blank"
         rel="noopener noreferrer"
         class="btn-primary"

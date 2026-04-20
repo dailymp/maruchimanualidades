@@ -1,47 +1,67 @@
 ---
 const galleryItems = [
   {
-    image: "/vestido-comunion-nina-rosa-volantes-organza.jpeg",
-    label: "Vestido de comunión rosa con volantes de organza",
+    image: "/vestido-comunion-nina-blanco-lazo-perlas.webp",
+    label: "Vestido de comunion blanco con lazo y perlas",
     size: "lg",
   },
   {
-    image: "/bolso-artesanal-blanco-flores.jpeg",
+    image: "/vestido-ceremonia-nina-blanco-bordado-azahar.webp",
+    label: "Vestido de ceremonia blanco bordado estilo flor de azahar",
+    size: "md",
+  },
+  {
+    image: "/vestido-ceremonia-nina-crema-volantes-flor.webp",
+    label: "Vestido de ceremonia crema con volantes y flor",
+    size: "md",
+  },
+  {
+    image: "/vestido-fiesta-nina-rosa-jardin-flores.webp",
+    label: "Vestido de fiesta rosa para nina en jardin de flores",
+    size: "md",
+  },
+  {
+    image: "/vestido-ceremonia-nina-vichy-rojo-jardin.webp",
+    label: "Vestido vichy rojo para nina con blusa blanca",
+    size: "lg",
+  },
+  {
+    image: "/bolso-artesanal-blanco-flores.webp",
     label: "Bolso artesanal blanco con flores bordadas",
     size: "md",
   },
   {
-    image: "/vestido-ceremonia-nina-rosa-empolvado-encaje.jpeg",
+    image: "/vestido-ceremonia-nina-rosa-empolvado-encaje.webp",
     label: "Vestido de ceremonia en rosa empolvado con encaje",
     size: "md",
   },
   {
-    image: "/vestido-ceremonia-nina-amarillo-dorado-bordado.jpeg",
+    image: "/vestido-ceremonia-nina-amarillo-dorado-bordado.webp",
     label: "Vestido de ceremonia amarillo dorado con bordado floral",
     size: "md",
   },
   {
-    image: "/bolso-artesanal-estampado-tribal-maruchy.jpg",
+    image: "/bolso-artesanal-estampado-tribal-maruchy.webp",
     label: "Bolso étnico artesanal con cuentas de madera",
     size: "lg",
   },
   {
-    image: "/bolso-artesanal-bordado-margaritas-bambu.jpg",
+    image: "/bolso-artesanal-bordado-margaritas-bambu.webp",
     label: "Bolso bordado con margaritas y asa de bambú",
     size: "sm",
   },
   {
-    image: "/bolso-artesanal-estampado-otonal-hojas.jpg",
+    image: "/bolso-artesanal-estampado-otonal-hojas.webp",
     label: "Bolso saco estampado otoñal con cuentas",
     size: "sm",
   },
   {
-    image: "/bolso-artesanal-bordado-flores-perlas-madera.jpg",
+    image: "/bolso-artesanal-bordado-flores-perlas-madera.webp",
     label: "Bolso bordado floral con perlas y asa de madera",
     size: "md",
   },
   {
-    image: "/bolso-artesanal-bordado-hojas-tropicales-bambu.jpg",
+    image: "/bolso-artesanal-bordado-hojas-tropicales-bambu.webp",
     label: "Bolso tote bordado hojas tropicales con asa de bambú",
     size: "lg",
   },
@@ -82,6 +102,7 @@ const galleryItems = [
                 alt={item.label}
                 class={`w-full object-cover ${item.size === 'lg' ? 'h-56 md:h-64' : item.size === 'md' ? 'h-44 md:h-52' : 'h-36 md:h-44'} group-hover:scale-105 transition-transform duration-500`}
                 loading="lazy"
+                decoding="async"
               />
               <!-- Overlay hover con icono lupa -->
               <div class="absolute inset-0 bg-brand-900/0 group-hover:bg-brand-900/30 transition-all duration-300 flex items-center justify-center">

@@ -3,15 +3,21 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  canonical?: string;
 }
 
 const {
-  title = 'Maruchy Manualidades — Artesanía con Alma, Hecha en Canarias',
-  description = 'Descubre creaciones únicas hechas a mano en Canarias. Bolsos artesanales, vestidos de ceremonia para niña y productos personalizados con alma. Por Maruchy, con amor.',
-  image = '/og-image.jpg',
+  title = 'Maruchy Manualidades | Bolsos artesanales y vestidos de ceremonia en Canarias',
+  description = 'Descubre bolsos artesanales, vestidos de ceremonia y comunión para niña, y creaciones personalizadas hechas a mano en Canarias por Maruchy.',
+  image = '/maruchy-bolsos-portada-artesanal.jpg',
+  canonical,
 } = Astro.props;
 
 import '../styles/global.css';
+
+const siteUrl = 'https://maruchy.es';
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
+const ogImageUrl = image.startsWith('http') ? image : new URL(image, siteUrl).toString();
 ---
 
 <!DOCTYPE html>
@@ -21,15 +27,17 @@ import '../styles/global.css';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="keywords" content="manualidades canarias, artesanía canaria, vestidos de ceremonia niña, vestidos de comunión niña, bolsos artesanales, regalo personalizado, handmade canarias, maruchy manualidades" />
-    <meta name="author" content="Maruchy Manualidades" />
+    <meta name="author" content="Maruchy" />
     <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#15803d" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://maruchymanualidades.com/" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content="Selección de bolsos y creaciones artesanales de Maruchy" />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:site_name" content="Maruchy Manualidades" />
 
@@ -37,31 +45,31 @@ import '../styles/global.css';
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="/logo-maruchy-bolsos-artesanales.jpg" />
     <link rel="apple-touch-icon" href="/logo-maruchy-bolsos-artesanales.jpg" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://maruchymanualidades.com/" />
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- Structured Data: LocalBusiness -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "@id": "https://maruchymanualidades.com",
+      "@id": "https://maruchy.es",
       "name": "Maruchy Manualidades",
       "description": "Artesanía hecha a mano en Canarias. Bolsos artesanales, vestidos de ceremonia y productos personalizados.",
-      "url": "https://maruchymanualidades.com",
+      "url": "https://maruchy.es",
       "sameAs": ["https://www.instagram.com/maruchymanualidades"],
       "address": {
         "@type": "PostalAddress",
         "addressRegion": "Canarias",
         "addressCountry": "ES"
       },
-      "image": "https://maruchymanualidades.com/logo-maruchy-bolsos-artesanales.jpg",
+      "image": "https://maruchy.es/logo-maruchy-bolsos-artesanales.jpg",
       "priceRange": "€€",
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",

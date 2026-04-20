@@ -1,7 +1,7 @@
 ---
 const products = [
   {
-    image: "/bolso-artesanal-bordado-margaritas-bambu.jpg",
+    image: "/bolso-artesanal-bordado-margaritas-bambu.webp",
     imageAlt: "Bolso artesanal hecho a mano con bordado de margaritas y asa de bambú – Maruchy",
     name: "Bolsos Artesanales Bordados",
     description: "El sello de Maruchy. Bolsos únicos confeccionados a mano con telas seleccionadas, asas de bambú o madera y bordados exclusivos de flores, hojas y motivos naturales. Cada bolso es irrepetible — no encontrarás dos iguales en ningún lugar.",
@@ -11,10 +11,10 @@ const products = [
     featured: true,
   },
   {
-    image: "/vestido-ceremonia-nina-rosa-empolvado-encaje.jpeg",
-    imageAlt: "Vestido de ceremonia para niña en rosa empolvado con encaje floral y acabado artesanal",
+    image: "/vestido-ceremonia-nina-crema-volantes-flor.webp",
+    imageAlt: "Vestido de ceremonia para nina en color crema con volantes y lazo, confeccion artesanal",
     name: "Vestidos de Ceremonia y Comunión",
-    description: "Colección especial para ocasiones únicas: diseños delicados en rosa empolvado, crema y dorado suave, con encajes, bordados y volantes llenos de detalle.",
+    description: "Coleccion especial para ocasiones unicas: disenos delicados en crema, rosa empolvado y dorado suave, con encajes, bordados y volantes llenos de detalle.",
     tags: ["Nueva colección", "Ceremonia", "Comunión"],
     color: "from-rose-50 to-cream-100",
     accent: "bg-rose-100 text-rose-700",
@@ -96,6 +96,7 @@ const products = [
                   alt={product.imageAlt}
                   class="w-full h-96 object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div class="p-6">

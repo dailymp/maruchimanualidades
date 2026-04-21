@@ -8,7 +8,7 @@ interface Props {
 
 const {
   title = 'Maruchy Manualidades | Bolsos artesanales y vestidos de ceremonia en Canarias',
-  description = 'Descubre bolsos artesanales, vestidos de ceremonia y comunión para niña, y creaciones personalizadas hechas a mano en Canarias por Maruchy.',
+  description = 'Descubre bolsos artesanales, vestidos de ceremonia y comunion para nina, ganchillo y disenos personalizados hechos a mano en Canarias por Maruchy.',
   image = '/maruchy-bolsos-portada-artesanal.jpg',
   canonical,
 } = Astro.props;
@@ -26,7 +26,7 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, siteUrl).to
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="keywords" content="manualidades canarias, artesanía canaria, vestidos de ceremonia niña, vestidos de comunión niña, bolsos artesanales, regalo personalizado, handmade canarias, maruchy manualidades" />
+    <meta name="keywords" content="bolsos artesanales canarias, vestidos de ceremonia nina, vestidos de comunion nina, ganchillo artesanal, disenos personalizados, artesania canaria, maruchy" />
     <meta name="author" content="Maruchy" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#15803d" />
@@ -61,7 +61,7 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, siteUrl).to
       "@type": "LocalBusiness",
       "@id": "https://maruchy.es",
       "name": "Maruchy Manualidades",
-      "description": "Artesanía hecha a mano en Canarias. Bolsos artesanales, vestidos de ceremonia y productos personalizados.",
+      "description": "Artesania hecha a mano en Canarias. Bolsos artesanales, vestidos de ceremonia, ganchillo y disenos personalizados.",
       "url": "https://maruchy.es",
       "sameAs": ["https://www.instagram.com/maruchymanualidades"],
       "address": {

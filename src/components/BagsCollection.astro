@@ -5,6 +5,7 @@ const bagLooks = [
     alt: 'Bolso de ganchillo beige con lazo frontal y asas de madera artesanal',
     title: 'Ganchillo beige',
     description: 'Diseño tejido a mano con textura protagonista, asa de madera y acabado cálido para looks especiales.',
+    fullDescription: 'Diseño tejido a mano con textura protagonista, asa de madera y acabado cálido para looks especiales. Cada pieza es única y elaborada con dedicación.',
     accent: 'bg-[#f3e2b7] text-[#8d6a2d]',
     category: 'Ganchillo',
   },
@@ -13,6 +14,7 @@ const bagLooks = [
     alt: 'Bolso artesanal blanco con flores bordadas y acabado romántico',
     title: 'Blanco floral',
     description: 'Una pieza luminosa con bordado floral delicado para eventos, invitadas y regalos con personalidad.',
+    fullDescription: 'Una pieza luminosa con bordado floral delicado para eventos, invitadas y regalos con personalidad. Elaborado con hilos de alta calidad y acabados impecables.',
     accent: 'bg-[#f4dfd6] text-[#8f5c4f]',
     category: 'Bordado',
   },
@@ -21,6 +23,7 @@ const bagLooks = [
     alt: 'Bolso artesanal bordado con margaritas y asa de bambú',
     title: 'Margaritas',
     description: 'Asa de bambú y flores bordadas en una composición fresca, ligera y muy reconocible.',
+    fullDescription: 'Asa de bambú y flores bordadas en una composición fresca, ligera y muy reconocible. Perfecto para el día a día con un toque primaveral.',
     accent: 'bg-[#f5d6da] text-[#8d5a63]',
     category: 'Bambú',
   },
@@ -29,6 +32,7 @@ const bagLooks = [
     alt: 'Bolso artesanal bordado con flores, perlas y asa de madera',
     title: 'Flores y perlas',
     description: 'Acabado ornamental con perlas y bordado floral para un resultado sofisticado y muy artesanal.',
+    fullDescription: 'Acabado ornamental con perlas y bordado floral para un resultado sofisticado y muy artesanal. Ideal para ocasiones especiales.',
     accent: 'bg-[#f4dfd6] text-[#8f5c4f]',
     category: 'Madera',
   },
@@ -36,7 +40,24 @@ const bagLooks = [
     image: '/bolso-artesanal-bordado-hojas-tropicales-bambu.webp',
     alt: 'Bolso tote artesanal bordado con hojas tropicales y asa de bambú',
     title: 'Botanical Bloom',
-    description: 'Bolso tote bordado a mano con relieve en cinta de satín, perlas y asas circulares de bambú auténtico. Lona de algodón canvas con cierre de cremallera y bolsillos interiores. Medidas: 43x36 cm. Pieza única.',
+    description: 'Bolso tote bordado a mano con relieve en cinta de satín, perlas y asas circulares de bambú auténtico.',
+    fullDescription: `¡Lleva la naturaleza contigo! Este bolso no es solo un accesorio, es una obra de arte textil que combina resistencia y delicadeza en un diseño botánico único.
+
+✨ Lo que lo hace especial:
+• Arte en Relieve: Espectacular bordado tridimensional en cinta de satén, realzado con detalles en hilo y delicadas perlas que capturan la luz.
+• Materiales Premium: Confeccionado en lona de algodón (canvas) de alta durabilidad en tono crudo natural.
+• Estilo Orgánico: Elegantes asas circulares de bambú auténtico que aportan un toque rústico y sofisticado.
+• Máxima Organización: Cierre de cremallera de seguridad y bolsillos interiores para que nunca pierdas nada.
+
+📐 Dimensiones Perfectas:
+Medidas: 43 cm (ancho) x 36 cm (largo). Espacioso y cómodo para tu día a día.
+
+💫 Tips para un cuidado eterno:
+• Limpieza: Limpiar manchas con un paño húmedo (no usar lavadora).
+• Planchado: Solo por el revés de la tela; evita tocar el bordado y las perlas.
+• Mantenimiento: Secar a la sombra para proteger el brillo de las cintas y la madera.
+
+¡Pieza Única! El regalo perfecto para quienes valoran el trabajo artesanal y los detalles exclusivos.`,
     accent: 'bg-[#e2eedf] text-[#56724f]',
     category: 'Tote',
   },
@@ -45,6 +66,7 @@ const bagLooks = [
     alt: 'Bolso artesanal estampado tribal con detalle de cuentas de madera',
     title: 'Tribal Maruchy',
     description: 'Estampado con carácter y detalles de cuentas para una colección de bolsos única y expresiva.',
+    fullDescription: 'Estampado con carácter y detalles de cuentas para una colección de bolsos única y expresiva. Diseño atrevido para personalidades fuertes.',
     accent: 'bg-[#eadfd5] text-[#7a5f4d]',
     category: 'Estampado',
   },
@@ -123,9 +145,12 @@ const highlights = [
       </div>
 
       <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3 reveal">
-        {bagLooks.map((look) => (
-          <article class="group overflow-hidden rounded-[1.75rem] border border-white/70 bg-white/80 shadow-card backdrop-blur-sm">
-            <div class="overflow-hidden">
+        {bagLooks.map((look, index) => (
+          <article 
+            class="group overflow-hidden rounded-[1.75rem] border border-white/70 bg-white/80 shadow-card backdrop-blur-sm cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
+            data-bag-index={index}
+          >
+            <div class="overflow-hidden relative">
               <img
                 src={look.image}
                 alt={look.alt}
@@ -133,6 +158,14 @@ const highlights = [
                 loading="lazy"
                 decoding="async"
               />
+              <!-- Overlay hover con icono lupa -->
+              <div class="absolute inset-0 bg-[#4d342f]/0 group-hover:bg-[#4d342f]/30 transition-all duration-300 flex items-center justify-center">
+                <div class="opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-soft">
+                  <svg class="w-6 h-6 text-[#b68172]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                  </svg>
+                </div>
+              </div>
             </div>
             <div class="p-5">
               <div class="mb-3 flex items-center gap-3">
@@ -140,10 +173,179 @@ const highlights = [
                 <span class="text-xs uppercase tracking-[0.2em] text-[#ad8478]">{look.category}</span>
               </div>
               <p class="text-sm leading-relaxed text-[#6d5650]">{look.description}</p>
+              <p class="mt-3 text-xs text-[#b68172] font-medium">Haz clic para ver más detalles →</p>
             </div>
           </article>
         ))}
       </div>
     </div>
   </div>
+
+  <!-- Modal de Producto -->
+  <div
+    id="bag-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Detalles del producto"
+  >
+    <div class="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-3xl bg-white shadow-2xl flex flex-col md:flex-row">
+      <!-- Botón cerrar -->
+      <button
+        id="bag-modal-close"
+        class="absolute top-4 right-4 z-10 text-[#4d342f]/60 hover:text-[#4d342f] bg-white/80 hover:bg-white rounded-full p-2 transition-all duration-200 shadow-soft"
+        aria-label="Cerrar detalles del producto"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <!-- Imagen -->
+      <div class="md:w-1/2 bg-[#f5eee5] flex items-center justify-center p-6">
+        <img
+          id="bag-modal-img"
+          src=""
+          alt=""
+          class="max-w-full max-h-[50vh] md:max-h-[70vh] object-contain rounded-2xl shadow-soft"
+        />
+      </div>
+
+      <!-- Contenido -->
+      <div class="md:w-1/2 p-6 md:p-8 overflow-y-auto max-h-[50vh] md:max-h-[90vh]">
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <span id="bag-modal-category" class="text-xs uppercase tracking-[0.2em] text-[#ad8478]"></span>
+          </div>
+          
+          <h3 id="bag-modal-title" class="font-display text-3xl md:text-4xl text-[#4d342f]"></h3>
+          
+          <div id="bag-modal-description" class="text-[#6f5750] leading-relaxed whitespace-pre-line"></div>
+          
+          <div class="pt-4 border-t border-[#e8c8c3]">
+            <a
+              id="bag-modal-whatsapp"
+              href=""
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 w-full rounded-full bg-[#b68172] px-6 py-4 font-medium text-white shadow-soft transition-all duration-200 hover:bg-[#a06c5e]"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Consultar por este modelo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<script>
+  const bagData = [
+    {
+      image: '/bolso-ganchillo-beige-lazo-madera.jpeg',
+      alt: 'Bolso de ganchillo beige con lazo frontal y asas de madera artesanal',
+      title: 'Ganchillo beige',
+      category: 'Ganchillo',
+      description: 'Diseño tejido a mano con textura protagonista, asa de madera y acabado cálido para looks especiales. Cada pieza es única y elaborada con dedicación.',
+    },
+    {
+      image: '/bolso-artesanal-blanco-flores.webp',
+      alt: 'Bolso artesanal blanco con flores bordadas y acabado romántico',
+      title: 'Blanco floral',
+      category: 'Bordado',
+      description: 'Una pieza luminosa con bordado floral delicado para eventos, invitadas y regalos con personalidad. Elaborado con hilos de alta calidad y acabados impecables.',
+    },
+    {
+      image: '/bolso-artesanal-bordado-margaritas-bambu.webp',
+      alt: 'Bolso artesanal bordado con margaritas y asa de bambú',
+      title: 'Margaritas',
+      category: 'Bambú',
+      description: 'Asa de bambú y flores bordadas en una composición fresca, ligera y muy reconocible. Perfecto para el día a día con un toque primaveral.',
+    },
+    {
+      image: '/bolso-artesanal-bordado-flores-perlas-madera.webp',
+      alt: 'Bolso artesanal bordado con flores, perlas y asa de madera',
+      title: 'Flores y perlas',
+      category: 'Madera',
+      description: 'Acabado ornamental con perlas y bordado floral para un resultado sofisticado y muy artesanal. Ideal para ocasiones especiales.',
+    },
+    {
+      image: '/bolso-artesanal-bordado-hojas-tropicales-bambu.webp',
+      alt: 'Bolso tote artesanal bordado con hojas tropicales y asa de bambú',
+      title: 'Botanical Bloom',
+      category: 'Tote',
+      description: `¡Lleva la naturaleza contigo! Este bolso no es solo un accesorio, es una obra de arte textil que combina resistencia y delicadeza en un diseño botánico único.
+
+✨ Lo que lo hace especial:
+• Arte en Relieve: Espectacular bordado tridimensional en cinta de satén, realzado con detalles en hilo y delicadas perlas que capturan la luz.
+• Materiales Premium: Confeccionado en lona de algodón (canvas) de alta durabilidad en tono crudo natural.
+• Estilo Orgánico: Elegantes asas circulares de bambú auténtico que aportan un toque rústico y sofisticado.
+• Máxima Organización: Cierre de cremallera de seguridad y bolsillos interiores para que nunca pierdas nada.
+
+📐 Dimensiones Perfectas:
+Medidas: 43 cm (ancho) x 36 cm (largo). Espacioso y cómodo para tu día a día.
+
+💫 Tips para un cuidado eterno:
+• Limpieza: Limpiar manchas con un paño húmedo (no usar lavadora).
+• Planchado: Solo por el revés de la tela; evita tocar el bordado y las perlas.
+• Mantenimiento: Secar a la sombra para proteger el brillo de las cintas y la madera.
+
+¡Pieza Única! El regalo perfecto para quienes valoran el trabajo artesanal y los detalles exclusivos.`,
+    },
+    {
+      image: '/bolso-artesanal-estampado-tribal-maruchy.webp',
+      alt: 'Bolso artesanal estampado tribal con detalle de cuentas de madera',
+      title: 'Tribal Maruchy',
+      category: 'Estampado',
+      description: 'Estampado con carácter y detalles de cuentas para una colección de bolsos única y expresiva. Diseño atrevido para personalidades fuertes.',
+    },
+  ];
+
+  const modal = document.getElementById('bag-modal') as HTMLElement;
+  const modalImg = document.getElementById('bag-modal-img') as HTMLImageElement;
+  const modalTitle = document.getElementById('bag-modal-title') as HTMLElement;
+  const modalCategory = document.getElementById('bag-modal-category') as HTMLElement;
+  const modalDescription = document.getElementById('bag-modal-description') as HTMLElement;
+  const modalWhatsapp = document.getElementById('bag-modal-whatsapp') as HTMLAnchorElement;
+  const closeBtn = document.getElementById('bag-modal-close') as HTMLElement;
+
+  function openModal(index: number) {
+    const bag = bagData[index];
+    modalImg.src = bag.image;
+    modalImg.alt = bag.alt;
+    modalTitle.textContent = bag.title;
+    modalCategory.textContent = bag.category;
+    modalDescription.textContent = bag.description;
+    modalWhatsapp.href = `https://wa.me/34676053518?text=Hola%20Maruchy!%20Me%20interesa%20el%20bolso%20"${encodeURIComponent(bag.title)}"`;
+    
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-bag-index]').forEach(el => {
+    el.addEventListener('click', () => {
+      const index = parseInt(el.getAttribute('data-bag-index') ?? '0');
+      openModal(index);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>

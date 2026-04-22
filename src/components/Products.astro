@@ -9,6 +9,7 @@ const products = [
     color: "from-brand-50 to-cream-100",
     accent: "bg-brand-100 text-brand-700",
     featured: true,
+    href: "#bolsos",
   },
   {
     image: "/vestido-ceremonia-nina-crema-volantes-flor.webp",
@@ -18,6 +19,17 @@ const products = [
     tags: ["Nueva colección", "Ceremonia", "Comunión"],
     color: "from-rose-50 to-cream-100",
     accent: "bg-rose-100 text-rose-700",
+    href: "#ceremonia",
+  },
+  {
+    image: "/bolso-ganchillo-beige-lazo-madera.jpeg",
+    imageAlt: "Bolso de ganchillo beige con lazo y asa de madera hecho a mano",
+    name: "Bolso de Ganchillo",
+    description: "Nuevo diseño de bolso de ganchillo en tono beige, con textura artesanal, asa de madera y lazo frontal para un acabado elegante y natural.",
+    tags: ["Nuevo", "Ganchillo", "Bolso exclusivo"],
+    color: "from-amber-50 to-cream-100",
+    accent: "bg-amber-100 text-amber-700",
+    href: "#bolsos",
   },
   {
     emoji: "🧶",
@@ -60,12 +72,12 @@ const products = [
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
       {products.map((product, i) => (
         <article
-          class={`reveal card group cursor-pointer bg-gradient-to-br ${product.color} border border-warm-100 hover:-translate-y-1 ${product.featured ? 'sm:col-span-2 lg:col-span-2' : ''}`}
+          class={`reveal card group bg-gradient-to-br ${product.color} border border-warm-100 hover:-translate-y-1 ${product.featured ? 'sm:col-span-2 lg:col-span-2' : ''}`}
           style={`animation-delay: ${i * 80}ms`}
         >
+          <a href={product.href ?? '#creaciones'} class="block h-full cursor-pointer">
           {product.image ? (
             <>
-              <!-- Imagen real para producto estrella -->
               <div class="overflow-hidden rounded-t-2xl">
                 <img
                   src={product.image}
@@ -83,24 +95,23 @@ const products = [
                 </div>
                 <h3 class="font-display text-xl text-warm-900 mb-2 group-hover:text-brand-700 transition-colors">{product.name}</h3>
                 <p class="text-warm-500 text-sm leading-relaxed">{product.description}</p>
+                {product.href && <span class="mt-4 inline-flex text-sm font-medium text-brand-700">Ver colección</span>}
               </div>
             </>
           ) : (
             <div class="p-6">
-              <!-- Emoji icon -->
               <div class="text-4xl mb-4 group-hover:animate-float inline-block" aria-hidden="true">{product.emoji}</div>
-              <!-- Tags -->
               <div class="flex gap-2 mb-3 flex-wrap">
                 {product.tags.map(tag => (
                   <span class={`text-xs font-semibold px-2.5 py-1 rounded-full ${product.accent}`}>{tag}</span>
                 ))}
               </div>
-              <!-- Nombre -->
               <h3 class="font-display text-xl text-warm-900 mb-2 group-hover:text-brand-700 transition-colors">{product.name}</h3>
-              <!-- Descripción -->
               <p class="text-warm-500 text-sm leading-relaxed">{product.description}</p>
+              {product.href && <span class="mt-4 inline-flex text-sm font-medium text-brand-700">Ver colección</span>}
             </div>
           )}
+          </a>
         </article>
       ))}
     </div>

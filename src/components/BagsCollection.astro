@@ -1,76 +1,68 @@
 ---
-const ceremonyLooks = [
+const bagLooks = [
   {
-    image: '/vestido-ceremonia-nina-rojo-jardin-rosas.png',
-    alt: 'Vestido de ceremonia para niña en rojo con falda vaporosa en un jardín de rosas',
-    title: 'Rojo jardín',
-    description: 'Una propuesta vibrante para celebraciones especiales, con silueta fluida y presencia romántica.',
-    accent: 'bg-[#f5d6da] text-[#8d5a63]',
-    category: 'Ceremonia',
-  },
-  {
-    image: '/vestido-comunion-nina-blanco-lazo-perlas.webp',
-    alt: 'Vestido de comunión para niña en blanco con lazo central, perlas y complementos a juego',
-    title: 'Comunión blanco clásico',
-    description: 'Diseño elegante en blanco con lazada central y acabado ceremonial para comunión y celebraciones especiales.',
-    accent: 'bg-[#f5d6da] text-[#8d5a63]',
-    category: 'Comunión',
-  },
-  {
-    image: '/vestido-ceremonia-nina-blanco-bordado-azahar.webp',
-    alt: 'Vestido de ceremonia para niña en blanco bordado con detalles florales y estilo romántico',
-    title: 'Flor de azahar',
-    description: 'Bordado delicado, cintura floral y patrón romántico para celebraciones al aire libre.',
-    accent: 'bg-[#f4dfd6] text-[#8f5c4f]',
-    category: 'Ceremonia',
-  },
-  {
-    image: '/vestido-ceremonia-nina-crema-volantes-flor.webp',
-    alt: 'Vestido de ceremonia para niña en crema con falda de volantes y lazo satinado',
-    title: 'Crema volantes',
-    description: 'Volantes en capas y corte dulce para un look ceremonial elegante y atemporal.',
-    accent: 'bg-[#f4dfd6] text-[#8f5c4f]',
-    category: 'Ceremonia',
-  },
-  {
-    image: '/vestido-fiesta-nina-rosa-jardin-flores.webp',
-    alt: 'Vestido rosa para niña en jardin de flores, ideal para ceremonia o fiesta especial',
-    title: 'Rosa jardin',
-    description: 'Tejido ligero en rosa suave con volumen armonioso para eventos de temporada.',
-    accent: 'bg-[#f5d6da] text-[#8d5a63]',
-    category: 'Fiesta',
-  },
-  {
-    image: '/vestido-ceremonia-nina-vichy-rojo-jardin.webp',
-    alt: 'Vestido de ceremonia para niña con falda vichy roja y blusa blanca en estilo clásico',
-    title: 'Vichy rojo',
-    description: 'Una opción fresca y original para fiestas familiares con aire campestre y chic.',
+    image: '/bolso-ganchillo-beige-lazo-madera.jpeg',
+    alt: 'Bolso de ganchillo beige con lazo frontal y asas de madera artesanal',
+    title: 'Ganchillo beige',
+    description: 'Diseño tejido a mano con textura protagonista, asa de madera y acabado cálido para looks especiales.',
     accent: 'bg-[#f3e2b7] text-[#8d6a2d]',
-    category: 'Ceremonia',
+    category: 'Ganchillo',
   },
   {
-    image: '/vestido-ceremonia-nina-amarillo-dorado-bordado.webp',
-    alt: 'Vestido de ceremonia para niña en amarillo dorado con bordado floral y lazo satinado',
-    title: 'Champan dorado',
-    description: 'Una propuesta luminosa con bordados, plisados y brillo elegante para un día inolvidable.',
-    accent: 'bg-[#f3e2b7] text-[#8d6a2d]',
-    category: 'Ceremonia',
+    image: '/bolso-artesanal-blanco-flores.webp',
+    alt: 'Bolso artesanal blanco con flores bordadas y acabado romántico',
+    title: 'Blanco floral',
+    description: 'Una pieza luminosa con bordado floral delicado para eventos, invitadas y regalos con personalidad.',
+    accent: 'bg-[#f4dfd6] text-[#8f5c4f]',
+    category: 'Bordado',
+  },
+  {
+    image: '/bolso-artesanal-bordado-margaritas-bambu.webp',
+    alt: 'Bolso artesanal bordado con margaritas y asa de bambú',
+    title: 'Margaritas',
+    description: 'Asa de bambú y flores bordadas en una composición fresca, ligera y muy reconocible.',
+    accent: 'bg-[#f5d6da] text-[#8d5a63]',
+    category: 'Bambú',
+  },
+  {
+    image: '/bolso-artesanal-bordado-flores-perlas-madera.webp',
+    alt: 'Bolso artesanal bordado con flores, perlas y asa de madera',
+    title: 'Flores y perlas',
+    description: 'Acabado ornamental con perlas y bordado floral para un resultado sofisticado y muy artesanal.',
+    accent: 'bg-[#f4dfd6] text-[#8f5c4f]',
+    category: 'Madera',
+  },
+  {
+    image: '/bolso-artesanal-bordado-hojas-tropicales-bambu.webp',
+    alt: 'Bolso tote artesanal bordado con hojas tropicales y asa de bambú',
+    title: 'Hojas tropicales',
+    description: 'Una lectura más natural y fresca, con dibujo botánico y silueta amplia para uso diario.',
+    accent: 'bg-[#e2eedf] text-[#56724f]',
+    category: 'Tote',
+  },
+  {
+    image: '/bolso-artesanal-estampado-tribal-maruchy.webp',
+    alt: 'Bolso artesanal estampado tribal con detalle de cuentas de madera',
+    title: 'Tribal Maruchy',
+    description: 'Estampado con carácter y detalles de cuentas para una colección de bolsos única y expresiva.',
+    accent: 'bg-[#eadfd5] text-[#7a5f4d]',
+    category: 'Estampado',
   },
 ];
 
 const highlights = [
-  'Colección premium de ceremonia y comunión para niña',
-  'Tonos románticos: rosa empolvado, crema y dorado suave',
-  'Detalles de alto valor: encaje, bordado, lazos y organza',
-  'Encargos personalizados con asesoramiento directo por WhatsApp',
+  'Colección de bolsos artesanales con acabados bordados y tejidos a mano',
+  'Asas de bambú, madera y combinaciones textiles con presencia propia',
+  'Modelos exclusivos para regalo, invitadas y uso diario con estilo',
+  'Encargos personalizados con atención directa por WhatsApp',
 ];
 ---
 
-<section id="ceremonia" class="relative overflow-hidden py-24 lg:py-32 bg-[linear-gradient(180deg,#fffaf7_0%,#f8ebe2_52%,#f3ece5_100%)]">
+<section id="bolsos" class="relative overflow-hidden py-24 lg:py-32 bg-[linear-gradient(180deg,#fffaf7_0%,#f5eee5_52%,#efe1d2_100%)]">
   <div class="absolute inset-0 opacity-60" aria-hidden="true">
-    <div class="absolute left-[-8rem] top-12 h-64 w-64 rounded-full bg-[#f6d7d9] blur-3xl"></div>
+    <div class="absolute left-[-8rem] top-12 h-64 w-64 rounded-full bg-[#eadfd5] blur-3xl"></div>
     <div class="absolute right-[-6rem] top-24 h-72 w-72 rounded-full bg-[#f1dfbf] blur-3xl"></div>
-    <div class="absolute bottom-[-8rem] left-1/3 h-72 w-72 rounded-full bg-[#eadfd5] blur-3xl"></div>
+    <div class="absolute bottom-[-8rem] left-1/3 h-72 w-72 rounded-full bg-[#f6d7d9] blur-3xl"></div>
   </div>
 
   <div class="relative max-w-7xl mx-auto px-6 md:px-12">
@@ -80,16 +72,16 @@ const highlights = [
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
           </svg>
-          Colección ceremonia
+          Colección bolsos
         </span>
 
         <h2 class="mt-6 font-display text-4xl md:text-5xl lg:text-6xl leading-tight text-[#4d342f]">
-          Vestidos de comunión y ceremonia
-          <em class="block text-[#b68172] not-italic">hechos para un día irrepetible</em>
+          Bolsos artesanales exclusivos
+          <em class="block text-[#b68172] not-italic">diseñados para destacar en cualquier ocasión</em>
         </h2>
 
         <p class="mt-6 max-w-2xl text-lg leading-relaxed text-[#6f5750] text-balance">
-          Diseños exclusivos para comunión y celebraciones especiales. Piezas con acabado artesanal, tejidos con caída elegante y una paleta inspirada en rosa empolvado, champán, vainilla y dorado miel.
+          Bolsos bordados y tejidos a mano con materiales seleccionados, texturas ricas y un lenguaje visual artesanal que convierte cada pieza en un complemento único.
         </p>
 
         <div class="mt-8 grid gap-3 sm:grid-cols-2">
@@ -101,18 +93,18 @@ const highlights = [
         </div>
 
         <div class="mt-8 flex flex-wrap gap-3">
-          {['Rosa empolvado', 'Champán', 'Dorado suave', 'Crema perlado'].map((tone) => (
+          {['Ganchillo', 'Bordado floral', 'Asa de bambú', 'Piezas únicas'].map((tone) => (
             <span class="rounded-full border border-[#ead8ce] bg-[#fff7f3] px-4 py-2 text-sm font-medium text-[#8f655d]">{tone}</span>
           ))}
         </div>
 
         <div class="mt-10 flex flex-col sm:flex-row gap-4">
           <a
-            href="https://wa.me/34676053518?text=Hola%20Maruchy!%20Quiero%20informaci%C3%B3n%20sobre%20los%20vestidos%20de%20comuni%C3%B3n%20y%20ceremonia"
+            href="https://wa.me/34676053518?text=Hola%20Maruchy!%20Quiero%20informaci%C3%B3n%20sobre%20los%20bolsos%20artesanales"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center justify-center gap-2 rounded-full bg-[#b68172] px-8 py-4 font-medium text-white shadow-soft transition-all duration-200 hover:bg-[#a06c5e]"
-            aria-label="Solicitar información sobre vestidos de ceremonia por WhatsApp"
+            aria-label="Solicitar información sobre bolsos artesanales por WhatsApp"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -131,7 +123,7 @@ const highlights = [
       </div>
 
       <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3 reveal">
-        {ceremonyLooks.map((look) => (
+        {bagLooks.map((look) => (
           <article class="group overflow-hidden rounded-[1.75rem] border border-white/70 bg-white/80 shadow-card backdrop-blur-sm">
             <div class="overflow-hidden">
               <img

@@ -1,11 +1,11 @@
 ---
 const bagLooks = [
   {
-    image: '/bolso-artesanal-lino-flor-naranja-asa-madera.jpg',
+    image: '/bolso-artesanal-lino-flor-naranja-asa-madera.webp',
     alt: 'Bolso artesanal de lino con flor naranja bordada y asa de madera circular',
     title: 'Lino flor naranja',
     description: 'Bolso de lino en tono natural con aplicación floral en naranja y asa redonda de madera para un estilo elegante.',
-    fullDescription: `Bolso Artesanal de Lino con Flor Naranja
+    modalDescription: `Bolso Artesanal de Lino con Flor Naranja
 
 Diseñado para destacar con una estética cálida y sofisticada. Este bolso combina una base textil de lino de apariencia natural con un bordado floral protagonista en tonos naranja y detalles verdes.
 
@@ -23,11 +23,11 @@ Cuidado recomendado:
     category: 'Lino',
   },
   {
-    image: '/bolso-ganchillo-beige-lazo-madera.jpeg',
+    image: '/bolso-ganchillo-beige-lazo-madera.webp',
     alt: 'Bolso de ganchillo beige con lazo frontal y asas de madera artesanal',
     title: 'Ganchillo beige',
     description: 'Diseño tejido a mano con textura protagonista, asa de madera y acabado cálido para looks especiales.',
-    fullDescription: `Bolso Artisan Chic | Edición Limitada
+    modalDescription: `Bolso Artisan Chic | Edición Limitada
 
 El equilibrio perfecto entre lo rústico y lo sofisticado.
 
@@ -53,7 +53,7 @@ Para que luzca siempre como nuevo, límpialo con un paño húmedo y evita el lav
     alt: 'Bolso artesanal blanco con flores bordadas y acabado romántico',
     title: 'Blanco floral',
     description: 'Una pieza luminosa con bordado floral delicado para eventos, invitadas y regalos con personalidad.',
-    fullDescription: `Bolso de Mano "Jardín de Seda" – Bordado Artesanal
+    modalDescription: `Bolso de Mano "Jardín de Seda" – Bordado Artesanal
 
 Elegancia artesanal en cada relieve. Este bolso blanco destaca por su exquisito bordado en cinta hecho a mano, combinando texturas de satén y organza para crear una pieza única y sofisticada.
 
@@ -81,7 +81,7 @@ Guía de Cuidado:
     alt: 'Bolso artesanal bordado con margaritas y asa de bambú',
     title: 'Margaritas',
     description: 'Asa de bambú y flores bordadas en una composición fresca, ligera y muy reconocible.',
-    fullDescription: `Bolso Tote Primavera: Bambú & Bordado Artesanal
+    modalDescription: `Bolso Tote Primavera: Bambú & Bordado Artesanal
 
 Elegancia natural y detalle artesanal. Este bolso combina la resistencia de la fibra rústica con la delicadeza del bordado en cinta, rematado con exclusivas asas de bambú.
 
@@ -110,7 +110,7 @@ Cuidado Rápido:
     alt: 'Bolso artesanal bordado con flores, perlas y asa de madera',
     title: 'Flores y perlas',
     description: 'Acabado ornamental con perlas y bordado floral para un resultado sofisticado y muy artesanal.',
-    fullDescription: `Bolso Artesanal "Jardín en Relieve"
+    modalDescription: `Bolso Artesanal "Jardín en Relieve"
 
 Elegancia artesanal y funcionalidad en una sola pieza. Este bolso destaca por su exquisito trabajo manual y su estructura de materiales naturales.
 
@@ -140,7 +140,7 @@ Producto 100% Artesanal – Cada pieza es única debido a la naturaleza del bord
     alt: 'Bolso tote artesanal bordado con hojas tropicales y asa de bambú',
     title: 'Botanical Bloom',
     description: 'Bolso tote bordado a mano con relieve en cinta de satín, perlas y asas circulares de bambú auténtico.',
-    fullDescription: `¡Lleva la naturaleza contigo! Este bolso no es solo un accesorio, es una obra de arte textil que combina resistencia y delicadeza en un diseño botánico único.
+    modalDescription: `¡Lleva la naturaleza contigo! Este bolso no es solo un accesorio, es una obra de arte textil que combina resistencia y delicadeza en un diseño botánico único.
 
 ✨ Lo que lo hace especial:
 • Arte en Relieve: Espectacular bordado tridimensional en cinta de satén, realzado con detalles en hilo y delicadas perlas que capturan la luz.
@@ -165,7 +165,7 @@ Medidas: 43 cm (ancho) x 36 cm (largo). Espacioso y cómodo para tu día a día.
     alt: 'Bolso tote artesanal con estampado otoñal de hojas y asas de madera',
     title: 'Esencia de Otoño',
     description: 'Elegancia natural y diseño funcional con estampado botánico en tonos tierra y detalles de madera.',
-    fullDescription: `Bolso Tote "Esencia de Otoño" - Edición Artesanal
+    modalDescription: `Bolso Tote "Esencia de Otoño" - Edición Artesanal
 
 Elegancia natural y diseño funcional para tu día a día.
 
@@ -191,7 +191,7 @@ CUIDADO: Limpiar con paño húmedo y secar a la sombra para preservar los colore
     alt: 'Bolso artesanal estampado tribal con detalle de cuentas de madera',
     title: 'Tribal Maruchy',
     description: 'Elegancia artesanal y gran capacidad con diseño textil vibrante y detalles naturales para tu día a día.',
-    fullDescription: `Bolso Tote Maruchy · Estilo Étnico Artesanal
+    modalDescription: `Bolso Tote Maruchy · Estilo Étnico Artesanal
 
 Elegancia artesanal y gran capacidad en una sola pieza. Este bolso combina un diseño textil vibrante con detalles naturales para acompañarte en tu día a día con un toque bohemio único.
 
@@ -221,11 +221,7 @@ const highlights = [
 ---
 
 <section id="bolsos" class="relative overflow-hidden py-24 lg:py-32 bg-[linear-gradient(180deg,#fffaf7_0%,#f5eee5_52%,#efe1d2_100%)]">
-  <div class="absolute inset-0 opacity-60" aria-hidden="true">
-    <div class="absolute left-[-8rem] top-12 h-64 w-64 rounded-full bg-[#eadfd5] blur-3xl"></div>
-    <div class="absolute right-[-6rem] top-24 h-72 w-72 rounded-full bg-[#f1dfbf] blur-3xl"></div>
-    <div class="absolute bottom-[-8rem] left-1/3 h-72 w-72 rounded-full bg-[#f6d7d9] blur-3xl"></div>
-  </div>
+
 
   <div class="relative max-w-7xl mx-auto px-6 md:px-12">
     <div class="space-y-12 xl:space-y-14">
@@ -382,203 +378,8 @@ const highlights = [
   </div>
 </section>
 
-<script>
-  const bagData = [
-    {
-      image: '/bolso-artesanal-lino-flor-naranja-asa-madera.jpg',
-      alt: 'Bolso artesanal de lino con flor naranja bordada y asa de madera circular',
-      title: 'Lino flor naranja',
-      category: 'Lino',
-      description: `Bolso Artesanal de Lino con Flor Naranja
-
-Diseñado para destacar con una estética cálida y sofisticada. Este bolso combina una base textil de lino de apariencia natural con un bordado floral protagonista en tonos naranja y detalles verdes.
-
-Características:
-• Material exterior tipo lino de alta resistencia.
-• Aplicación floral artesanal en relieve con acabado decorativo.
-• Asa circular de madera con agarre cómodo y diseño distintivo.
-• Interior amplio para básicos del día a día.
-
-Cuidado recomendado:
-• Limpiar suavemente con paño húmedo.
-• No lavar a máquina.
-• Secar a la sombra para conservar color y textura.`,
-    },
-    {
-      image: '/bolso-ganchillo-beige-lazo-madera.jpeg',
-      alt: 'Bolso de ganchillo beige con lazo frontal y asas de madera artesanal',
-      title: 'Ganchillo beige',
-      category: 'Ganchillo',
-      description: `Bolso Artisan Chic | Edición Limitada
-
-El equilibrio perfecto entre lo rústico y lo sofisticado.
-
-Lleva contigo la esencia del verano con nuestro bolso tejido artesanalmente. Un diseño que combina la suavidad del algodón con la fuerza del yute, ideal para quienes buscan un accesorio con alma y estilo propio.
-
-¿Por qué te encantará?
-✨ Estilo Único: Tejido a mano con relieve texturizado y un lazo de yute natural que marca la diferencia.
-👜 Detalles Premium: Asas con bolas de madera natural que aportan un toque orgánico y cómodo.
-🔒 Máxima Funcionalidad: Totalmente forrado, con bolsillos internos y cierre de cremallera para tu total seguridad.
-🌿 Materiales Conscientes: Confeccionado en hilo de algodón 100% natural de alta resistencia.
-
-Detalles Técnicos:
-• Medidas: 35 cm ancho x 28 cm alto (el tamaño ideal para tu día a día).
-• Composición: Algodón, yute y madera natural.
-
-Cuidado Fácil:
-Para que luzca siempre como nuevo, límpialo con un paño húmedo y evita el lavado a máquina. Hecho para durar, diseñado para brillar.`,
-    },
-    {
-      image: '/bolso-artesanal-blanco-flores.webp',
-      alt: 'Bolso artesanal blanco con flores bordadas y acabado romántico',
-      title: 'Blanco floral',
-      category: 'Bordado',
-      description: `Bolso de Mano "Jardín de Seda" – Bordado Artesanal
-
-Elegancia artesanal en cada relieve. Este bolso blanco destaca por su exquisito bordado en cinta hecho a mano, combinando texturas de satén y organza para crear una pieza única y sofisticada.
-
-Características Principales:
-• Diseño Único: Bordado floral artístico con relieve 3D en cintas de satín y organza.
-• Capacidad y Orden: Interior totalmente forrado con prácticos bolsillos internos para tus esenciales.
-• Asas Premium: Doble asa circular de madera pulida que aporta un toque natural y firmeza.
-• Medidas: 43 cm (ancho) x 35 cm (largo).
-
-Materiales:
-• Exterior: Tela reforzada de alta resistencia.
-• Detalles: Cintas de seda, satín y aplicaciones de perlas finas.
-• Asas: Madera tratada.
-
-Guía de Cuidado:
-💡 Para mantener la belleza del bordado:
-• Limpieza: Usar paño húmedo solo en áreas sin bordado. Limpieza profesional en seco recomendada.
-• Cuidado: Evitar roces con objetos punzantes para no dañar los hilos de seda.
-• Guardado: Mantener en su funda de tela sin peso encima.`,
-    },
-    {
-      image: '/bolso-artesanal-bordado-margaritas-bambu.webp',
-      alt: 'Bolso artesanal bordado con margaritas y asa de bambú',
-      title: 'Margaritas',
-      category: 'Bambú',
-      description: `Bolso Tote Primavera: Bambú & Bordado Artesanal
-
-Elegancia natural y detalle artesanal. Este bolso combina la resistencia de la fibra rústica con la delicadeza del bordado en cinta, rematado con exclusivas asas de bambú.
-
-Especificaciones Técnicas:
-• Medidas: 41 cm (ancho) x 31 cm (largo).
-• Material: Tejido de lona/yute rústico de alta durabilidad.
-• Asas: Bambú natural circular (estilo rígido).
-• Cierre: Cremallera superior de seguridad.
-• Interior: Totalmente forrado con bolsillos organizadores.
-
-Detalles de Diseño:
-• Colección: Primavera.
-• Decoración: Margaritas bordadas a mano con cinta de satén en relieve.
-• Estilo: Boho-chic / Natural / Artesanal.
-
-Cuidado Rápido:
-• Limpieza con paño húmedo. No lavar a máquina.
-• Evitar el roce directo sobre el bordado de cinta.
-
-"Artesanía que florece. Dale a tu estilo el toque natural del bambú."`,
-    },
-    {
-      image: '/bolso-artesanal-bordado-flores-perlas-madera.webp',
-      alt: 'Bolso artesanal bordado con flores, perlas y asa de madera',
-      title: 'Flores y perlas',
-      category: 'Madera',
-      description: `Bolso Artesanal "Jardín en Relieve"
-
-Elegancia artesanal y funcionalidad en una sola pieza. Este bolso destaca por su exquisito trabajo manual y su estructura de materiales naturales.
-
-Características Principales:
-• Tejido: Loneta de algodón premium (alta resistencia).
-• Bordado: Técnica de bordado en cintas con efecto 3D y detalles en pedrería.
-• Asas: Madera natural pulida de diseño ergonómico.
-• Seguridad: Cierre superior con cremallera y forro interior completo.
-• Capacidad: Incluye bolsillos internos para organización.
-
-Medidas:
-• Ancho: 40 cm
-• Largo: 30 cm
-
-Guía de Cuidado Rápido:
-• Limpieza: Solo limpieza localizada con paño húmedo. No usar lavadora.
-• Secado: Al aire libre, siempre a la sombra.
-• Planchado: Únicamente por el revés de la tela, evitando el área del bordado.
-• Madera: Limpiar las asas con un paño seco para mantener su brillo natural.
-
-Producto 100% Artesanal – Cada pieza es única debido a la naturaleza del bordado a mano.`,
-    },
-    {
-      image: '/bolso-artesanal-bordado-hojas-tropicales-bambu.webp',
-      alt: 'Bolso tote artesanal bordado con hojas tropicales y asa de bambú',
-      title: 'Botanical Bloom',
-      category: 'Tote',
-      description: `¡Lleva la naturaleza contigo! Este bolso no es solo un accesorio, es una obra de arte textil que combina resistencia y delicadeza en un diseño botánico único.
-
-✨ Lo que lo hace especial:
-• Arte en Relieve: Espectacular bordado tridimensional en cinta de satén, realzado con detalles en hilo y delicadas perlas que capturan la luz.
-• Materiales Premium: Confeccionado en lona de algodón (canvas) de alta durabilidad en tono crudo natural.
-• Estilo Orgánico: Elegantes asas circulares de bambú auténtico que aportan un toque rústico y sofisticado.
-• Máxima Organización: Cierre de cremallera de seguridad y bolsillos interiores para que nunca pierdas nada.
-
-📐 Dimensiones Perfectas:
-Medidas: 43 cm (ancho) x 36 cm (largo). Espacioso y cómodo para tu día a día.
-
-💫 Tips para un cuidado eterno:
-• Limpieza: Limpiar manchas con un paño húmedo (no usar lavadora).
-• Planchado: Solo por el revés de la tela; evita tocar el bordado y las perlas.
-• Mantenimiento: Secar a la sombra para proteger el brillo de las cintas y la madera.
-
-¡Pieza Única! El regalo perfecto para quienes valoran el trabajo artesanal y los detalles exclusivos.`,
-    },
-    {
-      image: '/bolso-artesanal-estampado-otonal-hojas.webp',
-      alt: 'Bolso tote artesanal con estampado otoñal de hojas y asas de madera',
-      title: 'Esencia de Otoño',
-      category: 'Tote',
-      description: `Bolso Tote "Esencia de Otoño" - Edición Artesanal
-
-Elegancia natural y diseño funcional para tu día a día.
-
-Este bolso tote combina un estilo boho-chic con la resistencia necesaria para el ritmo diario. Su exclusivo estampado botánico en tonos tierra y sus detalles en madera lo convierten en una pieza única de diseño artesanal.
-
-CARACTERÍSTICAS DESTACADAS:
-Asas Premium: Fabricadas con bolas de madera natural de alta resistencia, diseñadas para un agarre cómodo y duradero.
-Tejido de Calidad: Confeccionado en loneta acanalada (tipo corduroy) de tacto suave pero estructura firme.
-Cierre Seguro: Sistema magnético oculto que mantiene tus pertenencias protegidas sin romper la estética del bolso.
-Gran Capacidad: Ideal para llevar todo lo que necesitas (documentos, tablet, compras).
-
-ESPECIFICACIONES:
-Medidas: 45 cm ancho x 40 cm largo.
-Colores: Fondo gris topo con detalles en terracota, ocre y verde seco.
-Material: Mezcla de algodón reforzado y madera natural.
-
-CUIDADO: Limpiar con paño húmedo y secar a la sombra para preservar los colores.`,
-    },
-    {
-      image: '/bolso-artesanal-estampado-tribal-maruchy.webp',
-      alt: 'Bolso artesanal estampado tribal con detalle de cuentas de madera',
-      title: 'Tribal Maruchy',
-      category: 'Estampado',
-      description: `Bolso Tote Maruchy · Estilo Étnico Artesanal
-
-Elegancia artesanal y gran capacidad en una sola pieza. Este bolso combina un diseño textil vibrante con detalles naturales para acompañarte en tu día a día con un toque bohemio único.
-
-Características Principales
-Material: Tejido de tapicería resistente con estampado Jacquard de alta calidad.
-Asas: Circulares en tono chocolate, ergonómicas y reforzadas.
-Cierre: Magnético oculto para mayor seguridad y estética limpia.
-Interior: Forro completo con bolsillos organizadores para tus esenciales.
-Detalles: Cordón de ajuste con elegantes bolas de madera natural.
-
-Dimensiones
-Medidas: 42 cm (largo) x 43 cm (ancho).
-Capacidad: Formato XL, ideal para carpetas, dispositivos o uso diario.
-
-Hecho a mano: Cada pieza es única, confeccionada con atención al detalle y materiales seleccionados.`,
-    },
-  ];
+<script define:vars={{ bagLooks }}>
+  const bagData = bagLooks;
 
   const modal = document.getElementById('bag-modal') as HTMLElement;
   const modalImg = document.getElementById('bag-modal-img') as HTMLImageElement;
@@ -594,7 +395,7 @@ Hecho a mano: Cada pieza es única, confeccionada con atención al detalle y mat
     modalImg.alt = bag.alt;
     modalTitle.textContent = bag.title;
     modalCategory.textContent = bag.category;
-    modalDescription.textContent = bag.description;
+    modalDescription.textContent = bag.modalDescription;
     modalWhatsapp.href = `https://wa.me/34676053518?text=Hola%20Maruchy!%20Me%20interesa%20el%20bolso%20"${encodeURIComponent(bag.title)}"`;
     
     modal.classList.remove('hidden');

@@ -1,0 +1,229 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Finalizar pedido — Maruchy Manualidades"
+  description="Completa tu pedido de artesanía Maruchy. Pago cómodo al recibir (contrareembolso)."
+>
+  <main class="min-h-screen bg-[linear-gradient(180deg,#fffaf7_0%,#f5eee5_100%)] pt-28 pb-16 px-6 md:px-12">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-8">
+        <a href="/" class="inline-flex items-center gap-2 text-sm text-[#ad8478] hover:text-[#b68172] transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Volver a la tienda
+        </a>
+        <h1 class="mt-4 font-display text-4xl text-[#4d342f]">Finalizar pedido</h1>
+        <p class="mt-2 text-[#6f5750]">Pago al recibir — sin tarjeta, sin complicaciones.</p>
+      </div>
+
+      <div class="grid gap-8 lg:grid-cols-[1fr_380px]">
+
+        <!-- Formulario -->
+        <div class="rounded-3xl border border-white/70 bg-white/80 shadow-card backdrop-blur-sm p-6 md:p-8">
+          <h2 class="font-display text-xl text-[#4d342f] mb-6">Datos de entrega</h2>
+          <form id="checkout-form" class="space-y-5" novalidate>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label class="block text-sm font-medium text-[#6f5750] mb-1.5" for="name">Nombre completo *</label>
+                <input
+                  id="name" name="name" type="text" required autocomplete="name"
+                  class="w-full rounded-xl border border-warm-200 bg-white px-4 py-3 text-sm text-[#4d342f] placeholder-warm-300 focus:border-[#b68172] focus:outline-none focus:ring-2 focus:ring-[#b68172]/20 transition-colors"
+                  placeholder="Tu nombre"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-[#6f5750] mb-1.5" for="email">Email *</label>
+                <input
+                  id="email" name="email" type="email" required autocomplete="email"
+                  class="w-full rounded-xl border border-warm-200 bg-white px-4 py-3 text-sm text-[#4d342f] placeholder-warm-300 focus:border-[#b68172] focus:outline-none focus:ring-2 focus:ring-[#b68172]/20 transition-colors"
+                  placeholder="tu@email.com"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-[#6f5750] mb-1.5" for="phone">Teléfono *</label>
+              <input
+                id="phone" name="phone" type="tel" required autocomplete="tel"
+                class="w-full rounded-xl border border-warm-200 bg-white px-4 py-3 text-sm text-[#4d342f] placeholder-warm-300 focus:border-[#b68172] focus:outline-none focus:ring-2 focus:ring-[#b68172]/20 transition-colors"
+                placeholder="+34 600 000 000"
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-[#6f5750] mb-1.5" for="street">Dirección *</label>
+              <input
+                id="street" name="street" type="text" required autocomplete="street-address"
+                class="w-full rounded-xl border border-warm-200 bg-white px-4 py-3 text-sm text-[#4d342f] placeholder-warm-300 focus:border-[#b68172] focus:outline-none focus:ring-2 focus:ring-[#b68172]/20 transition-colors"
+                placeholder="Calle, número, piso..."
+              />
+            </div>
+
+            <div class="grid gap-5 sm:grid-cols-3">
+              <div class="sm:col-span-1">
+                <label class="block text-sm font-medium text-[#6f5750] mb-1.5" for="zip">Código postal *</label>
+                <input
+                  id="zip" name="zip" type="text" required autocomplete="postal-code"
+                  class="w-full rounded-xl border border-warm-200 bg-white px-4 py-3 text-sm text-[#4d342f] placeholder-warm-300 focus:border-[#b68172] focus:outline-none focus:ring-2 focus:ring-[#b68172]/20 transition-colors"
+                  placeholder="35001"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-[#6f5750] mb-1.5" for="city">Ciudad *</label>
+                <input
+                  id="city" name="city" type="text" required autocomplete="address-level2"
+                  class="w-full rounded-xl border border-warm-200 bg-white px-4 py-3 text-sm text-[#4d342f] placeholder-warm-300 focus:border-[#b68172] focus:outline-none focus:ring-2 focus:ring-[#b68172]/20 transition-colors"
+                  placeholder="Las Palmas"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-[#6f5750] mb-1.5" for="state">Provincia *</label>
+                <input
+                  id="state" name="state" type="text" required autocomplete="address-level1"
+                  class="w-full rounded-xl border border-warm-200 bg-white px-4 py-3 text-sm text-[#4d342f] placeholder-warm-300 focus:border-[#b68172] focus:outline-none focus:ring-2 focus:ring-[#b68172]/20 transition-colors"
+                  placeholder="Las Palmas"
+                />
+              </div>
+            </div>
+
+            <div id="form-error" class="hidden rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-600"></div>
+
+            <button
+              type="submit"
+              id="submit-btn"
+              class="w-full rounded-full bg-[#4d342f] px-6 py-4 font-medium text-white shadow-soft transition-all duration-200 hover:bg-[#3a2520] disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              Confirmar pedido · Pago al recibir
+            </button>
+          </form>
+        </div>
+
+        <!-- Resumen -->
+        <div class="space-y-4">
+          <div class="rounded-3xl border border-white/70 bg-white/80 shadow-card backdrop-blur-sm p-6">
+            <h2 class="font-display text-xl text-[#4d342f] mb-4">Resumen</h2>
+            <div id="order-summary" class="space-y-3 text-sm text-[#6f5750]">
+              <p class="text-center text-warm-300">Tu carrito está vacío</p>
+            </div>
+            <div id="order-total-row" class="hidden mt-4 pt-4 border-t border-warm-100 flex justify-between items-center">
+              <span class="font-medium text-[#4d342f]">Total</span>
+              <span id="order-total" class="font-display text-2xl font-bold text-[#4d342f]"></span>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-green-100 bg-green-50/70 px-5 py-4 text-sm text-green-700 space-y-1.5">
+            <p class="font-semibold">Pago al recibir</p>
+            <p>Pagas cuando el paquete llega a tu puerta. Sin tarjeta, sin anticipos.</p>
+          </div>
+
+          <div class="rounded-2xl border border-warm-100 bg-white/60 px-5 py-4 text-sm text-[#6f5750] space-y-1.5">
+            <p class="font-semibold text-[#4d342f]">¿Dudas?</p>
+            <a
+              href="https://wa.me/34676053518"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-700 transition-colors"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Escríbeme por WhatsApp
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import { cartItems, clearCart, getTotal } from '../stores/cart';
+
+  function esc(s: string): string {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  const summaryEl = document.getElementById('order-summary')!;
+  const totalRowEl = document.getElementById('order-total-row')!;
+  const totalEl = document.getElementById('order-total')!;
+  const form = document.getElementById('checkout-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const errorEl = document.getElementById('form-error')!;
+
+  function renderSummary() {
+    const items = cartItems.get();
+    if (!items.length) {
+      summaryEl.innerHTML = '<p class="text-center text-warm-300">Tu carrito está vacío</p>';
+      totalRowEl.classList.add('hidden');
+      return;
+    }
+
+    totalRowEl.classList.remove('hidden');
+    totalEl.textContent = `${getTotal().toLocaleString('es-ES', { minimumFractionDigits: 2 })} €`;
+
+    summaryEl.innerHTML = items.map((item) => `
+      <div class="flex justify-between items-center gap-2">
+        <span class="truncate">${esc(item.name)} × ${item.quantity}</span>
+        <span class="font-medium text-[#4d342f] whitespace-nowrap">${(item.price * item.quantity).toLocaleString('es-ES')} €</span>
+      </div>
+    `).join('');
+  }
+
+  cartItems.subscribe(renderSummary);
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.classList.add('hidden');
+
+    const items = cartItems.get();
+    if (!items.length) {
+      errorEl.textContent = 'Tu carrito está vacío.';
+      errorEl.classList.remove('hidden');
+      return;
+    }
+
+    const fd = new FormData(form);
+    const customer = {
+      name: (fd.get('name') as string).trim(),
+      email: (fd.get('email') as string).trim(),
+      phone: (fd.get('phone') as string).trim(),
+      street: (fd.get('street') as string).trim(),
+      city: (fd.get('city') as string).trim(),
+      zip: (fd.get('zip') as string).trim(),
+      state: (fd.get('state') as string).trim(),
+    };
+
+    if (!customer.name || !customer.email || !customer.phone || !customer.street || !customer.city || !customer.zip || !customer.state) {
+      errorEl.textContent = 'Por favor, rellena todos los campos obligatorios.';
+      errorEl.classList.remove('hidden');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando pedido...';
+
+    try {
+      const res = await fetch('/api/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ customer, items }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.error ?? 'Error desconocido');
+      }
+
+      clearCart();
+      window.location.href = `/pedido-confirmado?ref=${encodeURIComponent(data.orderRef)}`;
+    } catch (err) {
+      errorEl.textContent = err instanceof Error ? err.message : 'Error al enviar el pedido. Inténtalo de nuevo.';
+      errorEl.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Confirmar pedido · Pago al recibir';
+    }
+  });
+</script>

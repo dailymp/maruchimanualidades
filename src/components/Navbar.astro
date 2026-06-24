@@ -1,4 +1,5 @@
 ---
+import CartDrawer from './CartDrawer.astro';
 ---
 <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-6 md:px-12">
   <nav class="max-w-7xl mx-auto flex items-center justify-between">
@@ -21,7 +22,7 @@
       <li><a href="#galeria" class="nav-link">Galería</a></li>
     </ul>
 
-    <!-- CTA + Hamburger -->
+    <!-- CTA + Cart + Hamburger -->
     <div class="flex items-center gap-4">
       <a
         href="https://wa.me/34676053518?text=Hola%20Maruchy!%20Me%20gustaría%20saber%20más%20sobre%20tus%20creaciones"
@@ -35,6 +36,8 @@
         </svg>
         WhatsApp
       </a>
+      <CartDrawer />
+
       <button
         id="menu-btn"
         class="md:hidden p-2 text-warm-700 hover:text-brand-600 transition-colors"

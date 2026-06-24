@@ -1,0 +1,182 @@
+---
+---
+
+<!-- Cart toggle button (embedded in Navbar) -->
+<button
+  id="cart-toggle"
+  class="relative p-2 text-warm-700 hover:text-brand-600 transition-colors"
+  aria-label="Ver carrito de compra"
+>
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+  </svg>
+  <span
+    id="cart-count"
+    class="absolute -top-1 -right-1 bg-brand-600 text-white text-xs font-bold w-5 h-5 rounded-full items-center justify-center leading-none hidden"
+  ></span>
+</button>
+
+<!-- Drawer overlay -->
+<div
+  id="cart-overlay"
+  class="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm hidden"
+  aria-hidden="true"
+></div>
+
+<!-- Drawer panel -->
+<aside
+  id="cart-drawer"
+  class="fixed top-0 right-0 z-50 h-full w-full max-w-sm bg-white shadow-2xl flex flex-col translate-x-full transition-transform duration-300 ease-in-out"
+  role="dialog"
+  aria-label="Carrito de compra"
+  aria-modal="true"
+>
+  <!-- Header -->
+  <div class="flex items-center justify-between px-6 py-4 border-b border-warm-100">
+    <h2 class="font-display text-xl text-[#4d342f]">Tu carrito</h2>
+    <button
+      id="cart-close"
+      class="p-2 text-warm-500 hover:text-[#4d342f] transition-colors rounded-full hover:bg-warm-50"
+      aria-label="Cerrar carrito"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Items -->
+  <div id="cart-items" class="flex-1 overflow-y-auto px-6 py-4 space-y-4">
+    <p id="cart-empty" class="text-center text-warm-400 py-12 text-sm">Tu carrito está vacío</p>
+  </div>
+
+  <!-- Footer -->
+  <div id="cart-footer" class="hidden px-6 py-5 border-t border-warm-100 space-y-4 bg-[#fffaf7]">
+    <div class="flex justify-between items-center">
+      <span class="text-[#6f5750] font-medium">Total</span>
+      <span id="cart-total" class="font-display text-2xl font-bold text-[#4d342f]"></span>
+    </div>
+    <p class="text-xs text-[#ad8478] text-center">Pago al recibir (contrareembolso)</p>
+    <a
+      href="/checkout"
+      class="block w-full text-center rounded-full bg-[#4d342f] px-6 py-4 font-medium text-white shadow-soft transition-all duration-200 hover:bg-[#3a2520]"
+    >
+      Finalizar pedido
+    </a>
+  </div>
+</aside>
+
+<script>
+  import { cartItems, removeItem, updateQty, getCount, getTotal } from '../stores/cart';
+
+  function esc(s: string): string {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  const toggle = document.getElementById('cart-toggle')!;
+  const overlay = document.getElementById('cart-overlay')!;
+  const drawer = document.getElementById('cart-drawer')!;
+  const closeBtn = document.getElementById('cart-close')!;
+  const countBadge = document.getElementById('cart-count')!;
+  const itemsContainer = document.getElementById('cart-items')!;
+  const emptyMsg = document.getElementById('cart-empty')!;
+  const footer = document.getElementById('cart-footer')!;
+  const totalEl = document.getElementById('cart-total')!;
+
+  function openDrawer() {
+    drawer.classList.remove('translate-x-full');
+    overlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer.classList.add('translate-x-full');
+    overlay.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+
+  function renderCart(items: typeof cartItems extends { get(): infer T } ? T : never) {
+    const count = getCount();
+    const total = getTotal();
+
+    // Badge
+    if (count > 0) {
+      countBadge.textContent = count > 99 ? '99+' : String(count);
+      countBadge.classList.remove('hidden');
+      countBadge.classList.add('flex');
+    } else {
+      countBadge.classList.add('hidden');
+      countBadge.classList.remove('flex');
+    }
+
+    // Items
+    if (items.length === 0) {
+      emptyMsg.classList.remove('hidden');
+      footer.classList.add('hidden');
+      itemsContainer.innerHTML = '';
+      itemsContainer.appendChild(emptyMsg);
+      return;
+    }
+
+    emptyMsg.classList.add('hidden');
+    footer.classList.remove('hidden');
+    totalEl.textContent = `${total.toLocaleString('es-ES', { minimumFractionDigits: 2 })} €`;
+
+    itemsContainer.innerHTML = items.map((item) => `
+      <div class="flex gap-3 items-start" data-item-id="${item.id}">
+        <img
+          src="/api/product-image/${item.id}"
+          alt="${esc(item.name)}"
+          class="w-16 h-16 rounded-xl object-cover flex-shrink-0 bg-[#f5eee5]"
+        />
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-medium text-[#4d342f] truncate">${esc(item.name)}</p>
+          <p class="text-sm text-[#b68172] font-semibold mt-0.5">${item.price.toLocaleString('es-ES')} €</p>
+          <div class="flex items-center gap-2 mt-2">
+            <button
+              class="qty-btn w-7 h-7 rounded-full border border-warm-200 text-[#6f5750] hover:border-[#b68172] hover:text-[#b68172] flex items-center justify-center text-sm transition-colors"
+              data-id="${item.id}" data-qty="${item.quantity - 1}"
+              aria-label="Reducir cantidad"
+            >−</button>
+            <span class="text-sm text-[#4d342f] w-4 text-center">${item.quantity}</span>
+            <button
+              class="qty-btn w-7 h-7 rounded-full border border-warm-200 text-[#6f5750] hover:border-[#b68172] hover:text-[#b68172] flex items-center justify-center text-sm transition-colors"
+              data-id="${item.id}" data-qty="${item.quantity + 1}"
+              aria-label="Aumentar cantidad"
+            >+</button>
+          </div>
+        </div>
+        <button
+          class="remove-btn p-1.5 text-warm-300 hover:text-red-400 transition-colors flex-shrink-0 mt-0.5"
+          data-id="${item.id}"
+          aria-label="Eliminar producto"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    `).join('');
+
+    itemsContainer.querySelectorAll<HTMLButtonElement>('.qty-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = Number(btn.dataset.id);
+        const qty = Number(btn.dataset.qty);
+        updateQty(id, qty);
+      });
+    });
+
+    itemsContainer.querySelectorAll<HTMLButtonElement>('.remove-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        removeItem(Number(btn.dataset.id));
+      });
+    });
+  }
+
+  cartItems.subscribe(renderCart);
+</script>

@@ -199,5 +199,154 @@ export async function createOrder(
     [orderId],
   ], { fields: ['id', 'name'] });
 
+  // Enviar email de confirmación al cliente y notificación a Maruchy
+  const partnerData = await rpc<{ name: string; email: string; phone: string }[]>(
+    'res.partner', 'read', [[partnerId]], { fields: ['name', 'email', 'phone'] }
+  );
+  if (partnerData[0]) {
+    const total = items.reduce((s, i) => s + i.price * i.quantity, 0);
+    const note = `Envío: ${customer.street}, ${customer.city} ${customer.zip} (${customer.state})`;
+    await sendOrderNotifications(orderId, order, partnerId, partnerData[0], total, note);
+  }
+
   return order;
+}
+
+export async function sendOrderNotifications(
+  orderId: number,
+  order: { name: string },
+  partnerId: number,
+  partner: { name: string; email: string; phone: string },
+  total: number,
+  note: string | false
+): Promise<void> {
+  const address = note ? note.replace('Envío: ', '') : 'No especificada';
+
+  const clientBody = `
+    <p>Hola ${partner.name},</p>
+    <p>Hemos recibido tu pedido en <strong>Maruchy Manualidades</strong>. ¡Gracias por tu confianza!</p>
+    <p><strong>Referencia:</strong> ${order.name}<br>
+    <strong>Total:</strong> ${total.toFixed(2)} €<br>
+    <strong>Dirección de entrega:</strong> ${address}</p>
+    <p>Maruchy preparará tu pedido y te avisará cuando sea enviado. El pago se realiza al recibir el paquete.</p>
+    <p>¿Tienes dudas? Escríbenos por <a href="https://wa.me/34676053518">WhatsApp</a>.</p>
+    <p>Un abrazo,<br><strong>Maruchy Manualidades</strong></p>
+  `.trim();
+
+  const maruchyBody = `
+    <p>🛍 <strong>Nuevo pedido web: ${order.name}</strong></p>
+    <ul>
+      <li><strong>Cliente:</strong> ${partner.name}</li>
+      <li><strong>Email:</strong> ${partner.email}</li>
+      <li><strong>Teléfono:</strong> ${partner.phone}</li>
+      <li><strong>Total:</strong> ${total.toFixed(2)} €</li>
+      <li><strong>Dirección:</strong> ${address}</li>
+    </ul>
+  `.trim();
+
+  // Buscar partner de Maruchy para la notificación interna
+  const maruchyPartners = await rpc<{ id: number }[]>('res.partner', 'search_read', [
+    [['email', '=', 'pedidos@maruchy.es']],
+  ], { fields: ['id'], limit: 1 });
+  const maruchyPartnerId = maruchyPartners[0]?.id;
+
+  // mail.compose.message renderiza HTML correctamente (message_post lo escapa)
+  async function sendCompose(subject: string, body: string, recipientIds: number[]) {
+    const composerId = await rpc<number>('mail.compose.message', 'create', [{
+      subject,
+      body,
+      partner_ids: recipientIds,
+      model: 'sale.order',
+      res_ids: [orderId],
+      composition_mode: 'comment',
+    }]);
+    return rpc<unknown>('mail.compose.message', 'action_send_mail', [[composerId]], {
+      context: { active_ids: [orderId], active_model: 'sale.order' },
+    });
+  }
+
+  const tasks: Promise<unknown>[] = [
+    sendCompose(
+      `Maruchy Manualidades — Pedido ${order.name} recibido`,
+      clientBody,
+      [partnerId],
+    ),
+  ];
+
+  if (maruchyPartnerId) {
+    tasks.push(sendCompose(
+      `🛍 Nuevo pedido web: ${order.name}`,
+      maruchyBody,
+      [maruchyPartnerId],
+    ));
+  }
+
+  await Promise.allSettled(tasks);
+}
+
+export type OrderState = 'draft' | 'sent' | 'sale' | 'done' | 'cancel';
+
+export interface OrderLine {
+  name: string;
+  quantity: number;
+  price_unit: number;
+  price_subtotal: number;
+}
+
+export interface CustomerOrder {
+  id: number;
+  name: string;
+  date: string;
+  state: OrderState;
+  total: number;
+  note: string | false;
+  lines: OrderLine[];
+}
+
+export async function getOrdersByEmail(email: string): Promise<CustomerOrder[]> {
+  const partners = await rpc<{ id: number }[]>('res.partner', 'search_read', [
+    [['email', '=', email.toLowerCase()]],
+  ], { fields: ['id'], limit: 1 });
+
+  if (!partners.length) return [];
+
+  const orders = await rpc<{
+    id: number; name: string; date_order: string;
+    state: string; amount_total: number; note: string | false;
+  }[]>('sale.order', 'search_read', [
+    [['partner_id', '=', partners[0].id], ['origin', 'like', 'maruchy-web']],
+  ], {
+    fields: ['id', 'name', 'date_order', 'state', 'amount_total', 'note'],
+    order: 'id desc',
+    limit: 20,
+  });
+
+  if (!orders.length) return [];
+
+  const orderIds = orders.map((o) => o.id);
+  const lines = await rpc<{
+    order_id: [number, string]; name: string;
+    product_uom_qty: number; price_unit: number; price_subtotal: number;
+  }[]>('sale.order.line', 'search_read', [
+    [['order_id', 'in', orderIds]],
+  ], {
+    fields: ['order_id', 'name', 'product_uom_qty', 'price_unit', 'price_subtotal'],
+  });
+
+  return orders.map((order) => ({
+    id: order.id,
+    name: order.name,
+    date: order.date_order,
+    state: order.state as OrderState,
+    total: order.amount_total,
+    note: order.note,
+    lines: lines
+      .filter((l) => l.order_id[0] === order.id)
+      .map((l) => ({
+        name: l.name,
+        quantity: l.product_uom_qty,
+        price_unit: l.price_unit,
+        price_subtotal: l.price_subtotal,
+      })),
+  }));
 }

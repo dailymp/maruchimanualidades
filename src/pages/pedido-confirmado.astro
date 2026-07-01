@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 const orderRef = Astro.url.searchParams.get('ref');
+const customerEmail = Astro.url.searchParams.get('email') ?? '';
 ---
 
 <Layout title="Pedido confirmado — Maruchy Manualidades">
@@ -46,6 +47,13 @@ const orderRef = Astro.url.searchParams.get('ref');
 
       <a href="/" class="block text-sm text-warm-400 hover:text-warm-600 transition-colors">
         Volver a la tienda
+      </a>
+
+      <a
+        href={`/mis-pedidos${customerEmail ? `?email=${encodeURIComponent(customerEmail)}` : ''}`}
+        class="block text-sm text-[#b68172] hover:text-[#a06c5e] transition-colors font-medium"
+      >
+        Ver todos mis pedidos →
       </a>
     </div>
   </main>

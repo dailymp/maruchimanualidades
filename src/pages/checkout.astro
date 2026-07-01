@@ -218,7 +218,7 @@ import Layout from '../layouts/Layout.astro';
       }
 
       clearCart();
-      window.location.href = `/pedido-confirmado?ref=${encodeURIComponent(data.orderRef)}`;
+      window.location.href = `/pedido-confirmado?ref=${encodeURIComponent(data.orderRef)}&email=${encodeURIComponent(customer.email)}`;
     } catch (err) {
       errorEl.textContent = err instanceof Error ? err.message : 'Error al enviar el pedido. Inténtalo de nuevo.';
       errorEl.classList.remove('hidden');

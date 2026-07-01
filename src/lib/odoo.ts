@@ -244,9 +244,10 @@ export async function sendOrderNotifications(
     </ul>
   `.trim();
 
-  // Buscar partner de Maruchy para la notificación interna
+  // Buscar partner de Maruchy sin usuario Odoo vinculado (el usuario API es el autor
+  // del mensaje y Odoo lo excluye automáticamente de los destinatarios de email)
   const maruchyPartners = await rpc<{ id: number }[]>('res.partner', 'search_read', [
-    [['email', '=', 'pedidos@maruchy.es']],
+    [['email', '=', 'pedidos@maruchy.es'], ['user_ids', '=', false]],
   ], { fields: ['id'], limit: 1 });
   const maruchyPartnerId = maruchyPartners[0]?.id;
 

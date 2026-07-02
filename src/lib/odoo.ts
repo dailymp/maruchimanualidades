@@ -110,11 +110,18 @@ export async function getProducts(categoryName?: string): Promise<OdooProduct[]>
     domain.push(['categ_id.name', 'like', categoryName]);
   }
 
-  return rpc<OdooProduct[]>('product.template', 'search_read', [domain], {
-    fields: ['id', 'name', 'list_price', 'description_sale', 'categ_id'],
-    limit: 100,
-    order: 'sequence asc, id asc',
-  });
+  const timeout = new Promise<never>((_, reject) =>
+    setTimeout(() => reject(new Error('Odoo timeout')), 5000)
+  );
+
+  return Promise.race([
+    rpc<OdooProduct[]>('product.template', 'search_read', [domain], {
+      fields: ['id', 'name', 'list_price', 'description_sale', 'categ_id'],
+      limit: 100,
+      order: 'sequence asc, id asc',
+    }),
+    timeout,
+  ]);
 }
 
 export async function getProductImage(id: number): Promise<Buffer | null> {

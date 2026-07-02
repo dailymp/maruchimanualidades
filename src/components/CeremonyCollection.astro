@@ -93,12 +93,18 @@ const highlights = [
       </div>
 
       {ceremonyLooks.length === 0 ? (
-        <p class="text-center text-[#ad8478] py-12">Cargando colección...</p>
+        <div class="flex flex-col items-center justify-center gap-3 py-16">
+          <svg class="w-8 h-8 animate-spin text-[#b68172]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+          </svg>
+          <p class="text-[#ad8478]">Cargando colección...</p>
+        </div>
       ) : (
         <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3 reveal">
           {ceremonyLooks.map((look, index) => (
             <article
-              class="group overflow-hidden rounded-[1.75rem] border border-white/70 bg-white/80 shadow-card backdrop-blur-sm cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
+              class="group flex flex-col overflow-hidden rounded-[1.75rem] border border-white/70 bg-white/80 shadow-card backdrop-blur-sm cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
               data-ceremony-index={index}
             >
               <div class="overflow-hidden relative">
@@ -117,13 +123,14 @@ const highlights = [
                   </div>
                 </div>
               </div>
-              <div class="p-5">
+              <div class="p-5 flex flex-col flex-1 justify-between">
                 <div class="mb-3 flex items-center gap-3">
                   <span class={`rounded-full px-3 py-1 text-xs font-semibold ${look.accent}`}>{look.title}</span>
                   <span class="text-xs uppercase tracking-[0.2em] text-[#ad8478]">{look.category}</span>
                 </div>
-                <p class="text-sm leading-relaxed text-[#6d5650]">{look.description}</p>
-                <p class="mt-3 text-xs text-[#b68172] font-medium">Haz clic para ver más detalles →</p>
+                {look.description && (
+                  <p class="text-sm text-[#6d5650] line-clamp-1">{look.description}</p>
+                )}
               </div>
             </article>
           ))}
